@@ -1,11 +1,11 @@
-const { task } = require("hardhat/config");
+import { task } from "hardhat/config";
 
 task("balance", "Prints an account's balance")
   .addParam("account", "The account's address")
-  .setAction(async (taskArgs) => {
-    const balance = await ethers.provider.getBalance(taskArgs.account);
+  .setAction(async (taskArgs, hre) => {
+    const balance = await hre.ethers.provider.getBalance(taskArgs.account);
 
-    console.log(ethers.utils.formatEther(balance), "ETH");
+    console.log(hre.ethers.utils.formatEther(balance), "ETH");
   });
 
 module.exports = {};
