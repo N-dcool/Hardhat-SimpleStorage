@@ -1,14 +1,12 @@
-const { ethers } = require("hardhat");
-const { assert, expect } = require("chai");
-const { takeSnapshot } = require("@nomicfoundation/hardhat-network-helpers");
-const {
-  TASK_COMPILE_SOLIDITY_COMPILE,
-} = require("hardhat/builtin-tasks/task-names");
+import { ethers } from "hardhat";
+import { assert, expect } from "chai";
+import {SimpleStorage, SimpleStorage__factory} from "../typechain-types";
 
 describe("SimpleStorage", () => {
-  let SimpleStorageFactory, simpleStorage;
+  let simpleStorageFactory: SimpleStorage__factory;
+  let simpleStorage: SimpleStorage;
   beforeEach(async function () {
-    simpleStorageFactory = await ethers.getContractFactory("SimpleStorage");
+    simpleStorageFactory = (await ethers.getContractFactory("SimpleStorage")) as SimpleStorage__factory;
     simpleStorage = await simpleStorageFactory.deploy();
   });
 
@@ -37,7 +35,6 @@ describe("SimpleStorage", () => {
       expectedFavNumber
     );
     await transactionResponse.wait(1);
-
     const { personName, favNumber } = await simpleStorage.people(0);
 
     assert(expectedFavNumber, favNumber);

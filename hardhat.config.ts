@@ -6,6 +6,7 @@ import "./tasks/block-number";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "@nomiclabs/hardhat-ethers";
+import "@typechain/hardhat";
 
 const GOERLI_RCP_URL = process.env.GOERLI_RCP_URL || "https://www.random.com";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x1234";
