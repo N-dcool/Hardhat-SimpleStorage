@@ -1,10 +1,11 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config();
-require("@nomiclabs/hardhat-etherscan");
-require("./tasks/account-balance");
-require("./tasks/block-number");
-require("hardhat-gas-reporter");
-require("solidity-coverage");
+import "@nomicfoundation/hardhat-toolbox";
+import "dotenv/config";
+import "@nomiclabs/hardhat-etherscan";
+import "./tasks/account-balance";
+import "./tasks/block-number";
+import "hardhat-gas-reporter";
+import "solidity-coverage";
+import "@nomiclabs/hardhat-ethers";
 
 const GOERLI_RCP_URL = process.env.GOERLI_RCP_URL || "https://www.random.com";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x1234";
