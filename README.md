@@ -1,34 +1,5 @@
 # Hardhat Simple Storage
 
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Quickstart](#quickstart)
-  - [Typescript](#typescript)
-    - [Optional Gitpod](#optional-gitpod)
-- [Usage](#usage)
-  - [Testing](#testing)
-    - [Test Coverage](#test-coverage)
-  - [Estimate gas](#estimate-gas)
-  - [Local Deployment](#local-deployment)
-    - [Important localhost note](#important-localhost-note)
-  - [Deployment to a testnet or mainnet](#deployment-to-a-testnet-or-mainnet)
-    - [Verify on etherscan](#verify-on-etherscan)
-- [In it's current state, if you have your api key set, it will auto verify rinkeby contracts!](#in-its-current-state-if-you-have-your-api-key-set-it-will-auto-verify-rinkeby-contracts)
-
-- [Credit !](#credit)
-
-
-
-- [Optional Gitpod](#optional-gitpod)
-
-  - [Testing](#testing)
-    - [Test Coverage](#test-coverage)
-  - [Estimate gas](#estimate-gas)
-  - [Local Deployment](#local-deployment)
-    - [Important localhost note](#important-localhost-note)
-  - [Deployment to a testnet or mainnet](#deployment-to-a-testnet-or-mainnet)
-    - [Verify on etherscan](#verify-on-etherscan)
-- [Credit !](#credit)
 
 # Getting Started
 
@@ -160,12 +131,15 @@ Head over to [faucets.chain.link](https://faucets.chain.link/) and get some tesn
 npx hardhat run scripts/deploy.js --network goerli
 ```
 
-### Verify on etherscan
+# Typescript differences
 
-If you deploy to a testnet or mainnet, you can verify it if you get an [API Key](https://etherscan.io/myapikey) from Etherscan and set it as an environment variable named `ETHERSCAN_API_KEY`. You can pop it into your `.env` file as seen in the `.env.example`.
-
-
-In it's current state, if you have your api key set, it will auto verify goerli contracts!
+1. `.js` files are now `.ts`
+2. We added a bunch of typescript and typing packages to our `package.json`
+3. The biggest one being [typechain](https://github.com/dethcrypto/TypeChain)
+   1. This gives your contracts static typing, meaning you'll always know exactly what functions a contract can call. 
+   2. This gives us `factories` that are specific to the contracts they are factories of. See the tests folder for a version of how this is implemented. 
+4. We use `imports` instead of `require`. Confusing to you? [Watch this video](https://www.youtube.com/watch?v=mK54Cn4ceac)
+5. Add `tsconfig.json`
 
 # Credit
 Learned from [@Patrick_Collins](https://github.com/PatrickAlphaC) in FreeCodeCamp 🥳.
